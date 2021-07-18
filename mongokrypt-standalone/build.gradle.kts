@@ -63,7 +63,7 @@ publishing {
                 }
             }
             scm {
-                url.set("https://github.com/JacobRhiel/mongo-krypt")
+                url.set("https://github.com/JacobRhiel/mongo-krypt.git")
             }
 
         }
