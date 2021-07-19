@@ -8,6 +8,7 @@ import com.mongodb.client.model.vault.DataKeyOptions
 import com.mongodb.client.vault.ClientEncryption
 import com.mongodb.client.vault.ClientEncryptions
 import com.mongokrypt.shared.vault.configuration.IProviderConfiguration
+import org.bson.BsonDocument
 import java.util.*
 
 /**
@@ -20,9 +21,12 @@ interface IKeyProvider<C : IProviderConfiguration> {
     val namespace: String
     val masterKey: ByteArray
         get() = byteArrayOf()
-    val kmsProviders: Map<String, Map<String, Any>>
+    val kmsProviderKey: String
+    val kmsProvider: Map<String, Any>
     val encryptionSettings: ClientEncryptionSettings
     var autoEncryptionSettings: AutoEncryptionSettings
     val keyOptions: DataKeyOptions
         get() = DataKeyOptions()
+
+    fun createEncryptedClient(schemas: Map<String, BsonDocument>): MongoClient
 }

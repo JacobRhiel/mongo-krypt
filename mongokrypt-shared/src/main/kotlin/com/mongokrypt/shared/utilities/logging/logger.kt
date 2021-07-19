@@ -1,4 +1,4 @@
-package com.mongokrypt.utilities.logging
+package com.mongokrypt.shared.utilities.logging
 
 import mu.KotlinLogging
 

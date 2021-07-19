@@ -14,18 +14,19 @@ class GoogleCloudProvider(
     uri: String,
     namespace: String,
     configuration: GoogleCloudProviderConfiguration
-) : AbstractKeyProvider<GoogleCloudProviderConfiguration>(configuration, uri, namespace,
+) : AbstractKeyProvider<GoogleCloudProviderConfiguration>(
+    configuration, uri, namespace,
+    "gcp",
     mapOf(
-        "gcp" to mapOf(
-            "email" to BsonString(configuration.email),
-            "privateKey" to BsonString(configuration.privateKey),
-            "endpoint" to BsonString(
-                if(configuration.authEndpoint.isEmpty())
-                    "oauth2.googleapis.com"
-                else configuration.authEndpoint
-            )
+        "email" to BsonString(configuration.email),
+        "privateKey" to BsonString(configuration.privateKey),
+        "endpoint" to BsonString(
+            if (configuration.authEndpoint.isEmpty())
+                "oauth2.googleapis.com"
+            else configuration.authEndpoint
+        )
     )
-)) {
+) {
 
     override val keyOptions: DataKeyOptions = DataKeyOptions()
         .masterKey(
@@ -36,10 +37,13 @@ class GoogleCloudProvider(
                 append("keyName", BsonString(configuration.keyName))
                 append("keyRing", BsonString(configuration.keyRing))
                 append("keyVersion", BsonString(configuration.keyVersion))
-                append("endpoint", BsonString(
-                    if(configuration.callbackEndpoint.isEmpty())
-                        "cloudkms.googleapis.com"
-                    else configuration.callbackEndpoint))
+                append(
+                    "endpoint", BsonString(
+                        if (configuration.callbackEndpoint.isEmpty())
+                            "cloudkms.googleapis.com"
+                        else configuration.callbackEndpoint
+                    )
+                )
             }
         )
 

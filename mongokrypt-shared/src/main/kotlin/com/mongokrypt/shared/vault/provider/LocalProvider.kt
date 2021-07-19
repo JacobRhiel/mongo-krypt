@@ -13,10 +13,9 @@ class LocalProvider(
     configuration: LocalProviderConfiguration
 ) : AbstractKeyProvider<LocalProviderConfiguration>(
     configuration, uri, namespace,
+    "local",
     mapOf(
-        "local" to mapOf(
-            "key" to configuration.masterKey.readBytes()
-        )
+        "key" to configuration.masterKey.readBytes()
     )
 ) {
 

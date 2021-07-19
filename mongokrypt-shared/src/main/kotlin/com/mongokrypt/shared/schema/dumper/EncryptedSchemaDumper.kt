@@ -2,8 +2,8 @@ package com.mongokrypt.shared.schema.dumper
 
 import com.fasterxml.jackson.databind.JsonNode
 import com.mongokrypt.shared.schema.JsonSchema
-import com.mongokrypt.utilities.JacksonUtils
-import com.mongokrypt.utilities.logging.logger
+import com.mongokrypt.shared.utilities.JacksonUtils
+import com.mongokrypt.shared.utilities.logging.logger
 import java.io.File
 import java.nio.file.Files
 import java.nio.file.Path
@@ -124,6 +124,7 @@ data class EncryptedSchemaDumper(
             val innerSchemaNode = node.get(database.plus(".").plus(collection))
             rootNode.putPOJO(database.plus(".").plus(collection), innerSchemaNode)
         }
+        logger().info { "writing" }
         mapper.writerWithDefaultPrettyPrinter().writeValue(file, rootNode)
     }
 

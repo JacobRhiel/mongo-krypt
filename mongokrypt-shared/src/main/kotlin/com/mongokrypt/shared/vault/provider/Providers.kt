@@ -1,8 +1,7 @@
 package com.mongokrypt.shared.vault.provider
 
 import com.mongokrypt.shared.vault.configuration.IProviderConfiguration
-import com.mongokrypt.shared.vault.configuration.gcp.GoogleCloudProviderConfiguration
-import com.mongokrypt.utilities.JacksonUtils
+import com.mongokrypt.shared.utilities.JacksonUtils
 
 /**
  * @author Jacob Rhiel <jacob.rhiel@gmail.com>

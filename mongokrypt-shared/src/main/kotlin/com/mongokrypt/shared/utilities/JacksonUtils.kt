@@ -1,4 +1,4 @@
-package com.mongokrypt.utilities
+package com.mongokrypt.shared.utilities
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.afterburner.AfterburnerModule

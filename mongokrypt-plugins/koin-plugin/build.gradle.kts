@@ -1,5 +1,5 @@
 group = "com.mongokrypt"
-version = "1.0-SNAPSHOT"
+version = "1.0.0"
 
 dependencies {
     implementation(project(":mongokrypt-standalone"))

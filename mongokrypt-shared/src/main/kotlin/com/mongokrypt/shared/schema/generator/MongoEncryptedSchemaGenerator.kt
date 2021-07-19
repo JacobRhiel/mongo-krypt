@@ -8,7 +8,7 @@ import com.mongokrypt.shared.schema.algorithm.EncryptionAlgorithm
 import com.mongokrypt.shared.schema.dumper.EncryptedSchemaDumper
 import com.mongokrypt.shared.schema.generator.PreloadType.*
 import com.mongokrypt.shared.vault.provider.AbstractKeyProvider
-import com.mongokrypt.utilities.JacksonUtils.mapper
+import com.mongokrypt.shared.utilities.JacksonUtils.mapper
 import io.github.classgraph.ClassGraph
 import java.lang.reflect.Field
 import java.util.*

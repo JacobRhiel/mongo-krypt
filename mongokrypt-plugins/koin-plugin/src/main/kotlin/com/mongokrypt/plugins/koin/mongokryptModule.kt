@@ -1,7 +1,7 @@
 package com.mongokrypt.plugins.koin
 
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper
-import com.mongokrypt.configuration.MongoKryptConfiguration
+import com.mongokrypt.shared.configuration.MongoKryptConfiguration
 import org.koin.dsl.bind
 import org.koin.dsl.module
 import java.io.File

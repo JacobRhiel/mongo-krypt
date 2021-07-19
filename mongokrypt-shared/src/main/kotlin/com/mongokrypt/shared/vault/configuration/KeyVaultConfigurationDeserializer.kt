@@ -6,13 +6,8 @@ import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.DeserializationContext
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer
-import com.mongokrypt.shared.schema.algorithm.EncryptionAlgorithm
-import com.mongokrypt.shared.schema.dumper.DumpPolicy
-import com.mongokrypt.shared.schema.dumper.EncryptedSchemaDumper
-import com.mongokrypt.shared.schema.generator.PreloadType.*
-import com.mongokrypt.utilities.JacksonUtils
+import com.mongokrypt.shared.utilities.JacksonUtils
 import java.io.IOException
-import java.nio.file.Path
 
 /**
  * @author Jacob Rhiel <jacob.rhiel@gmail.com>

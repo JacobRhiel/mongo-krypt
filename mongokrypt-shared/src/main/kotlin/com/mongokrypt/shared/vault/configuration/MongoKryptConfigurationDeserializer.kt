@@ -6,16 +6,15 @@ import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.DeserializationContext
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer
-import com.mongokrypt.configuration.MongoKryptConfiguration
+import com.mongokrypt.shared.configuration.MongoKryptConfiguration
 import com.mongokrypt.shared.vault.configuration.exception.MissingConfigurationFieldException
 import com.mongokrypt.shared.vault.configuration.gcp.GoogleCloudProviderConfiguration
 import com.mongokrypt.shared.vault.configuration.local.LocalProviderConfiguration
 import com.mongokrypt.shared.vault.provider.AbstractKeyProvider
 import com.mongokrypt.shared.vault.provider.GoogleCloudProvider
 import com.mongokrypt.shared.vault.provider.LocalProvider
-import com.mongokrypt.utilities.JacksonUtils.mapper
+import com.mongokrypt.shared.utilities.JacksonUtils.mapper
 import java.io.IOException
-import java.nio.file.Path
 import kotlin.reflect.KClass
 
 /**
@@ -35,10 +34,11 @@ class MongoKryptConfigurationDeserializer :
         val vaultSettings = node.get("vault")
         val vaultConfiguration = mapper.convertValue(vaultSettings, KeyVaultConfiguration::class.java)
         val hasProviders = node.has("providers")
-        if (!hasProviders) throw MissingConfigurationFieldException("providers")
-        val providers = node.get("providers")
-        val providerConfiguration = defineProviderConfiguration(vaultConfiguration, providers)
-        return MongoKryptConfiguration(vaultConfiguration, providerConfiguration)
+        val providerConfiguration = if (hasProviders) {
+            val providers = node.get("providers")
+            defineProviderConfiguration(vaultConfiguration, providers)
+        } else null
+        return MongoKryptConfiguration(vaultConfiguration, providerConfiguration ?: emptyMap())
     }
 
     private fun defineProviderConfiguration(
